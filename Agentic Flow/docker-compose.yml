@@ -1,0 +1,31 @@
+version: '3'
+services:
+  orchestrator:
+    build: ./orchestrator-service
+    ports:
+      - "8000:8080"
+    depends_on:
+      - plaintiff-agent
+      - defendant-agent
+      - retriever
+      - judge-agent
+  
+  plaintiff-agent:
+    build: ./plaintiff-agent-service
+    ports:
+      - "8001:8080"
+  
+  defendant-agent:
+    build: ./defendant-agent-service
+    ports:
+      - "8002:8080"
+  
+  retriever:
+    build: ./retriever-service
+    ports:
+      - "8003:8080"
+  
+  judge-agent:
+    build: ./judge-agent-service
+    ports:
+      - "8004:8080" 
